@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes ellipsis {
+  0% {
+    opacity: .2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .2;
+  }
+}
