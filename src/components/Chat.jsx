@@ -1,9 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 function Chat() {
-  // messages [{ role: 'user' | 'bot', text: string }]
   const [messages, setMessages] = useState([]);
   const [userMessage, setUserMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);  // 添加初始化状态
+  const messagesEndRef = useRef(null);
+
+  // 添加自动滚动函数
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  // 当消息更新时自动滚动
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isLoading]);
 
   async function sendMessage() {
     if (!userMessage.trim()) return; // ignore empty
@@ -13,9 +25,9 @@ function Chat() {
 
     // Clear input field
     setUserMessage('');
+    setIsLoading(true);
 
     try {
-      // Make the request to backend, change after cors setup
       const tunedMessage = userMessage + "Could you make your response sounds like a mental therapist?";
       const response = await fetch('/api/googling', {
         method: 'POST',
@@ -39,6 +51,8 @@ function Chat() {
         text: 'Sorry, something went wrong. Please try again.',
       };
       setMessages((prev) => [...prev, errorReply]);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -62,6 +76,12 @@ function Chat() {
             {msg.text}
           </div>
         ))}
+        {isLoading && (
+          <div style={styles.botMessage}>
+            <span style={styles.loadingDots}>...</span>
+          </div>
+        )}
+        <div ref={messagesEndRef} /> {/* 添加这行 */}
       </div>
 
       <div style={styles.inputContainer}>
@@ -101,6 +121,8 @@ const styles = {
     padding: '10px',
     overflowY: 'auto', // scroll if many messages
     marginBottom: '10px',
+    display: 'flex',
+    flexDirection: 'column',
   },
   userMessage: {
     alignSelf: 'flex-end',
@@ -110,9 +132,12 @@ const styles = {
     borderRadius: '12px',
     maxWidth: '60%',
     marginLeft: 'auto',
+    marginRight: '0',
     whiteSpace: 'pre-wrap',
     wordWrap: 'break-word',
     textAlign: 'left',
+    display: 'inline-block',
+    width: 'fit-content',
   },
   botMessage: {
     alignSelf: 'flex-start',
@@ -140,5 +165,16 @@ const styles = {
     fontSize: '1rem',
     backgroundColor: "#355c7d",
     color: "white",
+  },
+  loadingDots: {
+    display: 'inline-block',
+    animation: 'ellipsis 1.4s infinite',
+    fontSize: '20px',
+    letterSpacing: '2px',
+  },
+  '@keyframes loadingDots': {
+    '0%': { transform: 'translateY(0)' },
+    '50%': { transform: 'translateY(-10px)' },
+    '100%': { transform: 'translateY(0)' },
   },
 };
