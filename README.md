@@ -1,72 +1,99 @@
-# Mental_Chat
-AI Chatbot
-# Getting Started with Create React App
+# 🧠 Mental Chat - AI Therapist Chatbot
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Mental Chat** is an AI-powered chatbot designed to simulate a compassionate, thoughtful **mental health therapist**. Users can interact with the bot to receive calming, therapeutic-style responses using OpenAI's GPT model.
 
-## Available Scripts
+Deployed at: [https://mentalchatbot.netlify.app/](https://mentalchatbot.netlify.app/)  
+_(replace with your actual URL)_
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 💬 Human-like conversational UI
+- 🧘 Calm, therapist-style responses via GPT-3.5
+- 🧠 Prompt tuning for mental health tone
+- 🔐 Secure backend API proxy to protect keys
+- 🌐 Deployed on Netlify with serverless functions
+- ⚡ Render backend auto-handled via proxy to avoid CORS
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🔧 Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Layer | Technology |
+|-------|------------|
+| Frontend | React (Create React App) |
+| Backend API | OpenAI (via Render-hosted API server) |
+| Hosting | Netlify (with Netlify Functions) |
+| Proxy | Serverless function to bypass CORS |
+| Styling | CSS / basic layout |
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Deployment (via Netlify)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Connect your GitHub repo to Netlify
+2. Ensure this structure exists:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+netlify/
+└── functions/
+    └── googling.js
+```
 
-### `npm run eject`
+3. Install required dependencies:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install node-fetch@2
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. In Netlify settings → Environment variables:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+API_BASE=https://mental-chat-server.onrender.com
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5. Netlify will auto-build and deploy when you push to `main`.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🧪 Local Development
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone the repo
 
-### Code Splitting
+```bash
+git clone https://github.com/yourusername/mental-chat.git
+cd mental-chat
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Start local dev server with Netlify support:
 
-### Analyzing the Bundle Size
+```bash
+netlify dev
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Your app will be available at [http://localhost:8888](http://localhost:8888)
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 💡 Future Improvements
 
-### Advanced Configuration
+- Add chat memory/context history
+- Support multi-language mental health prompts
+- Improve UI/UX with animations and avatars
+- Integrate basic emotion tracking / emoji feedback
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 📄 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This project is for educational & mental health experimentation purposes. Not a substitute for professional therapy.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🙏 Acknowledgements
+
+- [OpenAI](https://openai.com)
+- [Netlify](https://netlify.com)
+- [Render](https://render.com)
