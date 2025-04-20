@@ -3,7 +3,6 @@
 **Mental Chat** is an AI-powered chatbot designed to simulate a compassionate, thoughtful **mental health therapist**. Users can interact with the bot to receive calming, therapeutic-style responses using OpenAI's GPT model.
 
 Deployed at: [https://mentalchatbot.netlify.app/](https://mentalchatbot.netlify.app/)  
-_(replace with your actual URL)_
 
 ---
 
