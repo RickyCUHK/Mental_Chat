@@ -31,7 +31,7 @@ function Chat() {
   
     try {
       const tunedMessage = userMessage + " Could you make your response sound like a mental therapist?";
-      const response = await fetch('/api/googling', {
+      const response = await fetch('https://mental-chat-server.onrender.com/api/googling', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: tunedMessage }),
